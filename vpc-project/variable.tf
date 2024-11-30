@@ -47,19 +47,5 @@ variable "private-subnet-3-cidr" {
   type          = string
 }
 
-variable "private-subnet-4-cidr" {
-  default       = "10.0.5.0/24"
-  description   = "Private Subnet 4 CIDR Block"
-  type          = string
-}
 
-variable "tags" {
-  description = "Additional tags to apply to all resources"
-  type        = map(string)
-  default     = { "owner"    = "Nigeria"
-  "environment"    = "dev"
-  "project"        = "efcc"
-  "create_by"      = "Terraform"
-  "cloud_provider" = "aws"
-}
-}
+
