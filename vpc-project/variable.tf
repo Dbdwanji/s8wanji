@@ -1,51 +1,61 @@
-# VPC Variables
-variable "region" {
-  default       = "us-east-1"
-  description   = "AWS Region"
-  type          = string
+# VPC
+variable "vpc_cidr" {
+  description = "CIDR block for the VPC"
+  type        = string
 }
 
-variable "vpc-cidr" {
-  default       = "10.0.0.0/16"
-  description   = "VPC CIDR Block"
-  type          = string
+variable "vpc_name" {
+  description = "Name of the VPC"
+  type        = string
 }
 
-variable "public-subnet-1-cidr" {
-  default       = "10.0.0.0/24"
-  description   = "Public Subnet 1 CIDR Block"
-  type          = string
+# Internet Gateway
+variable "igw_name" {
+  description = "Name of the Internet Gateway"
+  type        = string
 }
 
-variable "public-subnet-2-cidr" {
-  default       = "10.0.1.0/24"
-  description   = "Public Subnet 2 CIDR Block"
-  type          = string
+# Public Subnets
+variable "public_subnets" {
+  description = "Map of public subnets with CIDR blocks and availability zones"
+  type = map(object({
+    cidr = string
+    az   = string
+  }))
 }
 
-variable "public-subnet-3-cidr" {
-  default       = "10.0.2.0/24"
-  description   = "Public Subnet 3 CIDR Block"
-  type          = string
+# Private Subnets
+variable "private_subnets" {
+  description = "Map of private subnets with CIDR blocks and availability zones"
+  type = map(object({
+    cidr = string
+    az   = string
+  }))
 }
 
-variable "private-subnet-1-cidr" {
-  default       = "10.0.3.0/24"
-  description   = "Private Subnet 1 CIDR Block"
-  type          = string
+# Route Tables
+variable "public_route_table_name" {
+  description = "Name of the public route table"
+  type        = string
 }
 
-variable "private-subnet-2-cidr" {
-  default       = "10.0.4.0/24"
-  description   = "Private Subnet 2 CIDR Block"
-  type          = string
+variable "private_route_table_name" {
+  description = "Name of the private route table"
+  type        = string
 }
 
-variable "private-subnet-3-cidr" {
-  default       = "10.0.5.0/24"
-  description   = "Private Subnet 3 CIDR Block"
-  type          = string
+# NAT Gateway
+variable "nat_eip_name" {
+  description = "Name of the Elastic IP for the NAT Gateway"
+  type        = string
 }
 
+variable "nat_gateway_name" {
+  description = "Name of the NAT Gateway"
+  type        = string
+}
 
-
+variable "nat_gateway_subnet" {
+  description = "Name of the public subnet for the NAT Gateway"
+  type        = string
+}
